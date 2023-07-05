@@ -47,6 +47,9 @@ class RegistrationActivity : AppCompatActivity() {
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
                 }
             }
+
+
+
         }
 
         registrationToLoginBtn.setOnClickListener {

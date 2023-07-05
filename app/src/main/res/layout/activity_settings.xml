@@ -92,5 +92,16 @@
         android:text="logout"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/deleteBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="100dp"
+        android:background="@drawable/button_bg_4"
+        android:fontFamily="sans-serif-medium"
+        android:text="delete account"
+        app:layout_constraintTop_toBottomOf="@+id/logoutBtn" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

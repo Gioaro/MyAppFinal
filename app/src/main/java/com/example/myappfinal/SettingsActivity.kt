@@ -1,10 +1,15 @@
 package com.example.myappfinal
 
+import android.content.ContentValues.TAG
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.EmailAuthProvider
+import com.google.firebase.auth.FirebaseAuth
+
 
 class SettingsActivity : AppCompatActivity() {
 
@@ -14,6 +19,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var iconSettings : ImageView
     private lateinit var iconProfile : ImageView
     private lateinit var logoutBtn : Button
+    private lateinit var deleteBtn : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +33,27 @@ class SettingsActivity : AppCompatActivity() {
 
 
     private fun listeners() {
+
+        deleteBtn.setOnClickListener {
+
+            val user = FirebaseAuth.getInstance().currentUser
+
+            val credential = EmailAuthProvider
+                .getCredential("user@example.com", "password1234")
+
+
+            user!!.reauthenticate(credential)
+                .addOnCompleteListener {
+                    user!!.delete()
+                        .addOnCompleteListener { task ->
+                            if (task.isSuccessful) {
+                                Log.d(TAG, "User account deleted.")
+                            }
+                        }
+                }
+
+
+        }
 
         iconHome.setOnClickListener {
             startActivity(Intent(this, FeedActivity::class.java))
@@ -62,6 +89,7 @@ class SettingsActivity : AppCompatActivity() {
         iconSettings = findViewById(R.id.iconSettings)
         iconProfile = findViewById(R.id.iconProfile)
         logoutBtn = findViewById(R.id.logoutBtn)
+        deleteBtn = findViewById(R.id.deleteBtn)
 
     }
 

@@ -66,6 +66,8 @@ class LoginActivity : AppCompatActivity() {
         loginPasswordET = findViewById(R.id.loginPasswordET)
         loginBtn = findViewById(R.id.loginBtn)
         loginForgotPassword = findViewById(R.id.loginForgotPassword)
+        loginSignUpBtn = findViewById(R.id.loginSignUpBtn)
+
     }
 
 
